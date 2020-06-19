@@ -9,7 +9,7 @@ module ActiveMerchant
         idempotency_key = options[:idempotency_key]
 
         headers = {
-          'Authorization' => 'Basic ' + Base64.encode64(key.to_s + ':').strip.gsub("\n", ''),
+          'Authorization' => 'Basic ' + Base64.strick_encode64(key.to_s + ':'),
           'User-Agent' => "Stripe/v1 ActiveMerchantBindings/#{ActiveMerchant::VERSION}",
           'Stripe-Version' => api_version(options),
           'X-Stripe-Client-User-Agent' => stripe_client_user_agent(options),
